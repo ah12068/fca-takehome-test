@@ -1,16 +1,17 @@
 sources for external data:
 
-## District mapper
+## District mapper -- USED
 https://geoportal.statistics.gov.uk/datasets/ward-to-local-authority-district-to-county-to-region-to-country-december-2017-lookup-in-united-kingdom-version-2
 
 https://opendata.arcgis.com/datasets/72e57d3ab1054e169c55afff3c9c1aa4_0.csv
 
-## Postcode mapper
+## Postcode mapper -- TESTED
 
 https://www.doogal.co.uk/PostcodeDownloads.php
 
 https://www.doogal.co.uk/files/postcodes.zip
 
-## Govt postcode mapper
+## Experian credit score grouper
 
-https://data.gov.uk/dataset/7ec10db7-c8f4-4a40-8d82-8921935b4865/national-statistics-postcode-lookup-uk
+https://www.experian.co.uk/consumer/mortgages/guides/credit-and-mortgages.html
+
