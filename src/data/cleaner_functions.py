@@ -78,10 +78,6 @@ def categorise_purpose(purpose):
         return purpose
 
 
-def categorise_term(term):
-    return float(term.split(' ')[0])
-
-
 def make_binary_class(loan_status):
     if loan_status == 'fully paid':
         return 0

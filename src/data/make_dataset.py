@@ -32,7 +32,6 @@ def main():
     raw_data.home_ownership = raw_data.home_ownership.apply(categorise_home_ownership)
     raw_data.inquiries_6m = raw_data.inquiries_6m.apply(categorise_inquiries)
     raw_data.purpose = raw_data.purpose.apply(categorise_purpose)
-    raw_data.term = raw_data.term.apply(categorise_term)
 
     logger.info(f'Imputing variables')
     impute_col(raw_data, 'total_current_balance', 'district', 'median')
@@ -51,7 +50,7 @@ def main():
                 f'Difference: row: {initial_row - new_row}, col: {initial_col - new_col}')
 
     output_filepath = f'../../data/interim/loans_clean.csv'
-    raw_data.to_csv(output_filepath)
+    raw_data.to_csv(output_filepath, index=False)
     logger.info(f'Clean data exported to {output_filepath}')
 
 
