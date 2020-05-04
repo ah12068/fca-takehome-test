@@ -63,17 +63,19 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
     model_roc_auc = roc_auc_score(y_test, predictions)
     fpr, tpr, thresholds = roc_curve(y_test, probabilities[:, 1])
 
-    metrics = f'''
-        Classification Report:\n{classification_report(y_test, predictions)}\n,
-        AUC Score: {model_roc_auc}\n,
-        Confusion Matrix:\n{conf_matrix}\n
-                '''
+    metrics = {
+        'Classification Report': classification_report(y_test, predictions),
+        'AUC Score': model_roc_auc,
+        'Confusion Matrix': conf_matrix,
+        'TPR': tpr,
+        'FPR': fpr
+    }
 
     logger.info('Producing Evaluation Report')
 
     trace1 = go.Heatmap(z=conf_matrix,
                         x=classes,
-                        y=["Not Churn", "Churn"],
+                        y=classes,
                         showscale=False,
                         colorscale="Picnic",
                         name="matrix")

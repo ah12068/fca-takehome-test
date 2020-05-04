@@ -54,9 +54,9 @@ parameter_grid = {
         "min_samples_split": [5, 10, 100, 500],
     },
     "RandomForestClassifier": {
-        'n_estimators': [100, 300, 500, 1000],
-        'max_features': ['auto', 'sqrt'],
-        'max_depth': [10, 20, 50, 100],
+        'n_estimators': [100,  500, 1000],
+        'max_features': ['auto'],
+        'max_depth': [10,  50, 100],
         'min_samples_split': [10, 100, 500],
         'min_samples_leaf': [1, 10, 100]
     }

@@ -47,14 +47,14 @@ def main(sampling_strat):
                 name=classifier
         )
 
-        f = open(f'../../models/{classifier}_{sampling_strat}_metrics.txt', 'w')
-        f.write(metrics)
+        f = open(f'../../models/{classifier}_{sampling_strat}_metrics.pickle', 'wb')
+        pkl.dump(metrics, f)
         f.close()
 
         m_out = open(f'../../models/{classifier}_{sampling_strat}_model.pickle', 'wb')
         pkl.dump(algorithm, m_out)
         m_out.close()
-        logger.info(f'{classifier} and metrics exported to models/')
+        logger.info(f'{classifier} and metrics (pickle files) exported to models/')
 
     logger.info(f'DOWNLOAD PLOTLY REPORTS')
 
