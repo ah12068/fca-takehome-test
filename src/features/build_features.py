@@ -39,6 +39,8 @@ def main():
     df = df.drop(columns=numerical_vars, axis=1)
     df = df.merge(scaled, left_index=True, right_index=True, how="left")
 
+    df = df.sample(frac=1, random_state=111).reset_index(drop=True)
+
     df.to_csv(f'{output_file_path}loans_processed.csv', index=False)
 
     logger.info(f'Data exported to {output_file_path}')
