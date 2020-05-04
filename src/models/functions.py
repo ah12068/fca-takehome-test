@@ -38,7 +38,8 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
         estimator=algorithm,
         param_grid=parameter_grid[name],
         cv=5,
-        n_jobs=cpu_count
+        n_jobs=cpu_count,
+        verbose=True
     )
 
     best_model = clf.fit(sampled_X.values, sampled_y.values.ravel())

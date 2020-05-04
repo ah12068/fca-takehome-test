@@ -1,8 +1,8 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTENC, ADASYN, RandomOverSampler
-from numpy import logspace
+import numpy as np
 import pandas as pd
 import os
 import plotly.io as pio
@@ -23,7 +23,7 @@ cate_cols_idx = [processed_df.columns.get_loc(col) for col in cate_cols]
 baseline_classifiers = {
     "LogisticRegression": LogisticRegression(random_state=random_seed, n_jobs=cpu_count),
     "DecisionTreeClassifier": DecisionTreeClassifier(random_state=random_seed),
-    "SVM": SVC(probability=True, kernel='linear')
+    "RandomForestClassifier": RandomForestClassifier(random_state=random_seed, n_jobs=cpu_count)
 }
 
 sampling_strats = {
@@ -51,16 +51,15 @@ parameter_grid = {
     },
     "DecisionTreeClassifier": {
         "max_leaf_nodes": list(range(2, 100)),
-        "min_samples_split": [5, 10, 100],
+        "min_samples_split": [5, 10, 100, 500],
     },
-    "SVM": {
-        "C": [0.001, 0.01, 0.1, 1, 10, 100],
-        "gamma": [0.001, 0.01, 0.1, 1, 10, 100],
+    "RandomForestClassifier": {
+        'n_estimators': [100, 300, 500, 1000],
+        'max_features': ['auto', 'sqrt'],
+        'max_depth': [10, 20, 50, 100],
+        'min_samples_split': [10, 100, 500],
+        'min_samples_leaf': [1, 10, 100]
     }
-}
-LogisticRegression_rndm_params = {
-    "penalty": ['l2'],
-    'C': [0.001, 0.01, 0.1, 1, 10, 100, 1000]
 }
 
 model_metrics = {
