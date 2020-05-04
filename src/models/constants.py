@@ -42,6 +42,7 @@ sampling_strats = {
 
 feature_coefs = [
     "DecisionTreeClassifier",
+    "RandomForestClassifier"
 ]
 
 parameter_grid = {
