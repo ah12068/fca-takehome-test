@@ -27,13 +27,13 @@ baseline_classifiers = {
         early_stopping=True,
         average=True),
 
-    "HuberRegression": SGDClassifier(
-        loss='modified_huber',
-        shuffle=True,
-        random_state=random_seed,
-        n_jobs=cpu_count,
-        early_stopping=True,
-        average=True),
+    # "HuberRegression": SGDClassifier(
+    #     loss='modified_huber',
+    #     shuffle=True,
+    #     random_state=random_seed,
+    #     n_jobs=cpu_count,
+    #     early_stopping=True,
+    #     average=True),
 
     "DecisionTreeClassifier": DecisionTreeClassifier(
         random_state=random_seed),
