@@ -141,7 +141,7 @@ def feature_select(processed_df, sampler, algorithm, n_features):
     sampled_X = pd.DataFrame(data=sampled_X, columns=cols)
     sampled_y = pd.DataFrame(data=sampled_y, columns=target_col)
 
-    logger.info(f'Performing RFE')
+    logger.info(f'Performing RFE for {n_features} features')
 
     model = RFE(estimator=algorithm, n_features_to_select=n_features)
     model.fit(X_train.values, y_train.values.ravel())
