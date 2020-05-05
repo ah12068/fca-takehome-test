@@ -11,7 +11,7 @@ import warnings
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-strat = 'ADASYN'
+strat = 'RandomOverSampler'
 
 
 def main(sampling_strat):
