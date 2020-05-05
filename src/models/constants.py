@@ -64,7 +64,7 @@ parameter_grid = {
         'alpha': alphas
     },
     "DecisionTreeClassifier": {
-        "max_leaf_nodes": list(range(2, 100)),
+        "max_depth": list(range(10, 110, 10)),
         "min_samples_split": [5, 10, 100, 500],
     },
     "HuberRegression": {
