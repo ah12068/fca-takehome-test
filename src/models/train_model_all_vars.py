@@ -29,7 +29,7 @@ def main(sampling_strat):
     for classifier in baseline_classifiers.keys():
         logger.info(f'Classifier: {classifier} w/ {sampling_strat}')
         if classifier in feature_coefs:
-            algorithm, metrics = baseline_trainer(
+            algorithm, metrics, visual_report = baseline_trainer(
                 processed_df=df,
                 algorithm=baseline_classifiers[classifier],
                 sampler=sampler,
@@ -39,7 +39,7 @@ def main(sampling_strat):
 
 
         else:
-            algorithm, metrics = baseline_trainer(
+            algorithm, metrics, visual_report = baseline_trainer(
                 processed_df=df,
                 algorithm=baseline_classifiers[classifier],
                 sampler=sampler,
@@ -47,16 +47,18 @@ def main(sampling_strat):
                 name=classifier
         )
 
-        f = open(f'../../models/{classifier}_{sampling_strat}_metrics.pickle', 'wb')
+        f = open(f'../../models/{classifier}_{sampling_strat}_allvar_metrics.pickle', 'wb')
         pkl.dump(metrics, f)
         f.close()
 
-        m_out = open(f'../../models/{classifier}_{sampling_strat}_model.pickle', 'wb')
+        m_out = open(f'../../models/{classifier}_{sampling_strat}_allvar_model.pickle', 'wb')
         pkl.dump(algorithm, m_out)
         m_out.close()
-        logger.info(f'{classifier} and metrics (pickle files) exported to models/')
 
-    logger.info(f'DOWNLOAD PLOTLY REPORTS')
+        visual_report.write_html(f'../../reports/figures/{classifier}_{sampling_strat}_allvar_report.html')
+        logger.info(f'Plotly charts exported to reports/figures')
+
+        logger.info(f'{classifier} and metrics (pickle files) exported to models/')
 
     return algorithm
 

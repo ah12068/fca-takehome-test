@@ -72,6 +72,7 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
         'TPR': tpr,
         'FPR': fpr
     }
+    print(f"Metrics:\n{metrics['Classification Report']}\n{model_roc_auc}")
 
     logger.info('Producing Evaluation Report')
 
@@ -84,7 +85,7 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
 
     # plot roc curve
     trace2 = go.Scatter(x=fpr, y=tpr,
-                        name="Roc : " + str(model_roc_auc),
+                        name=f'AUC: {model_roc_auc}',
                         line=dict(color='rgb(22, 96, 167)', width=2))
     trace3 = go.Scatter(x=[0, 1], y=[0, 1],
                         line=dict(color='rgb(205, 12, 24)', width=2,
@@ -120,7 +121,7 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
     fig.layout['hovermode'] = 'x'
     fig.show()
 
-    return algorithm, metrics
+    return algorithm, metrics, fig
 
 
 def create_report(algorithm, test_X, test_Y):
