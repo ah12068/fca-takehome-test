@@ -35,7 +35,8 @@ baseline_classifiers = {
         early_stopping=True,
         average=True),
 
-    "DecisionTreeClassifier": DecisionTreeClassifier(random_state=random_seed),
+    "DecisionTreeClassifier": DecisionTreeClassifier(
+        random_state=random_seed),
 }
 
 sampling_strats = {
@@ -64,7 +65,7 @@ parameter_grid = {
         'alpha': alphas
     },
     "DecisionTreeClassifier": {
-        "max_depth": list(range(10, 110, 10)),
+        "max_depth": list(range(10, 210, 10)),
         "min_samples_split": [10, 100, 500, 1000],
     },
     "HuberRegression": {

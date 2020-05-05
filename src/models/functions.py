@@ -93,7 +93,7 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
 
     # plot coeffs
     trace4 = go.Bar(x=coef_sumry["features"], y=coef_sumry["coefficients"],
-                    name="coefficients",
+                    name=cf,
                     marker=dict(color=coef_sumry["coefficients"],
                                 colorscale="Picnic",
                                 line=dict(width=.6, color="black")))
