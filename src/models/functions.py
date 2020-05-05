@@ -37,7 +37,7 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
     clf = GridSearchCV(
         estimator=algorithm,
         param_grid=parameter_grid[name],
-        cv=5,
+        cv=10,
         n_jobs=cpu_count,
         verbose=True
     )
@@ -50,8 +50,10 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
 
     if cf == "coefficients":
         coefficients = pd.DataFrame(best_model.best_estimator_.coef_.ravel())
+        plotly_title = 'Coefficients'
     elif cf == "features":
         coefficients = pd.DataFrame(best_model.best_estimator_.feature_importances_)
+        plotly_title = 'Feature Importances'
 
     column_df = pd.DataFrame(cols)
     coef_sumry = (pd.merge(coefficients, column_df, left_index=True,
@@ -99,7 +101,7 @@ def baseline_trainer(processed_df, algorithm, sampler, cf, name=None):
     fig = make_subplots(rows=2, cols=2, specs=[[{}, {}], [{'colspan': 2}, None]],
                         subplot_titles=('Confusion Matrix',
                                         'Receiver operating characteristic',
-                                        'Feature Importances'))
+                                        plotly_title))
 
     fig.append_trace(trace1, 1, 1)
     fig.append_trace(trace2, 1, 2)

@@ -1,8 +1,6 @@
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import SGDClassifier
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTENC, ADASYN, RandomOverSampler
-import numpy as np
 import pandas as pd
 import os
 import plotly.io as pio
@@ -21,9 +19,23 @@ cate_cols = [col for col in cate_cols if col not in target_col]
 cate_cols_idx = [processed_df.columns.get_loc(col) for col in cate_cols]
 
 baseline_classifiers = {
-    "LogisticRegression": LogisticRegression(random_state=random_seed, n_jobs=cpu_count),
+    "LogisticRegression": SGDClassifier(
+        loss='log',
+        shuffle=True,
+        random_state=random_seed,
+        n_jobs=cpu_count,
+        early_stopping=True,
+        average=True),
+
+    "HuberRegression": SGDClassifier(
+        loss='modified_huber',
+        shuffle=True,
+        random_state=random_seed,
+        n_jobs=cpu_count,
+        early_stopping=True,
+        average=True),
+
     "DecisionTreeClassifier": DecisionTreeClassifier(random_state=random_seed),
-    "RandomForestClassifier": RandomForestClassifier(random_state=random_seed, n_jobs=cpu_count)
 }
 
 sampling_strats = {
@@ -45,21 +57,18 @@ feature_coefs = [
     "RandomForestClassifier"
 ]
 
+alphas = [0.0001, 0.001, 0.01, 0.1]
+
 parameter_grid = {
     "LogisticRegression": {
-        "penalty": ['l2'],
-        "C": [0.001, 0.01, 0.1, 1, 10, 100]
+        'alpha': alphas
     },
     "DecisionTreeClassifier": {
         "max_leaf_nodes": list(range(2, 100)),
         "min_samples_split": [5, 10, 100, 500],
     },
-    "RandomForestClassifier": {
-        'n_estimators': [100,  500, 1000],
-        'max_features': ['auto'],
-        'max_depth': [10,  50, 100],
-        'min_samples_split': [10, 100, 500],
-        'min_samples_leaf': [1, 10, 100]
+    "HuberRegression": {
+        'alpha': alphas,
     }
 }
 
