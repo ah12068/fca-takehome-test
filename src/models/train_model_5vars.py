@@ -32,7 +32,7 @@ def main(sampling_strat):
                 algorithm=baseline_classifiers[classifier],
                 n_features=5,
                 sampler=strat,
-                cf='coefficients',
+                cf='features',
                 name=classifier
             )
 
