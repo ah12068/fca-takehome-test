@@ -41,7 +41,7 @@ def main():
     df = pd.get_dummies(data=df, columns=categorical_vars)
 
     logger.info(f'Producing Correlation Plot')
-    correlation = df[[var for var in df.columns if var not in Id + target]].corr()
+    correlation = df[[var for var in df.columns if var not in Id]].corr()
     matrix_cols = correlation.columns.tolist()
     corr_array = np.array(correlation)
 
