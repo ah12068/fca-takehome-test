@@ -13,10 +13,6 @@ Place external data in `data/external` see `references/external_data_sources.txt
 From root directory
 `pip install -r requirements.txt`
 
-### To execute documentation:
-From root directory
-`mkdocs serve`
-
 Project Organization
 ------------
 
