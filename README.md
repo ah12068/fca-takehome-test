@@ -1,7 +1,5 @@
-fca_test
+FCA take home assessment
 ==============================
-
-# FCA take home assessment
 
 ## `src/` contains source code for project 
 
