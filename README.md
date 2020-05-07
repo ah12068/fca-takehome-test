@@ -3,6 +3,11 @@ fca_test
 
 FCA take home assessment
 
+To execute documentation:
+------------
+# From root directory
+mkdocs serve
+------------
 Project Organization
 ------------
 
