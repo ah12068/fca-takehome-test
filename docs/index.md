@@ -9,13 +9,21 @@
 
 ## Scripts in src/features
 
-* `make_features` - Creates features from dataset suitable for machine learning.
+* `build_features` - Creates features from dataset suitable for machine learning.
 
 
 ## Scripts in src/models
 
-* `train.py` - Trains a machine learning model on the dataset.
-* `predict.py` - Predicts a sample from the trained machine learning model.
+* `train_model_all_vars.py` - Trains a machine learning model using all variables from the dataset.
+* `train_model_5var_vars.py` - Trains a machine learning model using 5 variables from the dataset.
+* `constants.py` - Contains static variables.
+* `functions.py` - Contains functions to train machine learning models.
+
+## Scripts in src/visualization
+
+* `1.0-JD-EDA.ipynb` - iPython notebook for Exploratory Data Analysis
+* `visualize_corr_pca.py` - Performs correlation analysis and Principal Components Analysis
+* `visualize_model_metrics.py` - Visualizes AUC and compares models. 
 
 ## Features
 
