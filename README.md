@@ -4,16 +4,19 @@ fca_test
 FCA take home assessment
 
 ### Create your data folders
-
+---------------
 ├── data
     │   ├── external    
     │   ├── interim        
     │   ├── processed     
-    │   └── raw          
+    │   └── raw 
+---------------
 
 Place raw data `loans_raw.csv` in `data/raw`
+
 Place a copy of the raw data called `loans_int.csv` in `data/interim`
-Place external data in `data/external` see `references/`
+
+Place external data in `data/external` see `references/external_data_sources.txt` to download data
 
 ### Install packages:
 From root directory
