@@ -4,13 +4,15 @@ fca_test
 FCA take home assessment
 
 ### Create your data folders
----------------
+------------
+
 ├── data
     │   ├── external    
     │   ├── interim        
     │   ├── processed     
     │   └── raw 
----------------
+    
+------------
 
 Place raw data `loans_raw.csv` in `data/raw`
 
