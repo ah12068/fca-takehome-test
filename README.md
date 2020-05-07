@@ -3,6 +3,18 @@ fca_test
 
 FCA take home assessment
 
+### Create your data folders
+
+├── data
+    │   ├── external    
+    │   ├── interim        
+    │   ├── processed     
+    │   └── raw          
+
+Place raw data `loans_raw.csv` in `data/raw`
+Place a copy of the raw data called `loans_int.csv` in `data/interim`
+Place external data in `data/external` see `references/`
+
 ### Install packages:
 From root directory
 `pip install -r requirements.txt`
