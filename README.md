@@ -1,8 +1,6 @@
 FCA take home assessment
 ==============================
 
-## `src/` contains source code for project 
-
 ### Create your data folders
 
 Place raw data `loans_raw.csv` in `data/raw` 
