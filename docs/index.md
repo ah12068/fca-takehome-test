@@ -1,5 +1,7 @@
 # FCA assessment Documentation
 
+# Project Organisation
+
 ## Scripts in src/data
 
 * `make_dataset.py` - Cleans dataset .
@@ -24,6 +26,21 @@
 * `1.0-JD-EDA.ipynb` - iPython notebook for Exploratory Data Analysis
 * `visualize_corr_pca.py` - Performs correlation analysis and Principal Components Analysis
 * `visualize_model_metrics.py` - Visualizes AUC and compares models. 
+
+# Data Cleansing Process
+
+* Features that had >= 50% nulls were dropped as there is not a significant amount of information to do anything with
+* All textual data was lower cased
+* All trailing and leading whitespaces were removed
+* `credit_score` and `annual_income` was changed to numeric type
+* `earliest_credit_line` was changed to datetime format
+* `employment_length`, `homw_ownership`, `inquiries_6m` and `purpose` was re-categorised
+* `total_current_balance` had its values imputed with the median, segmented by `district`
+* `credit_age` was created from `earliest_credit_line` by taking subtracting 2015 (latest date in data) from `earliest_credit_line`
+* `class` was created from `loan_status`, 1 if fully paid, 0 if defaulted, charged-off or late
+* Textual and leaky features were dropped.
+* Remaining samples were dropped, ~5% of data reduced.
+
 
 ## Features
 
