@@ -1,5 +1,6 @@
 import pickle as pkl
 from numpy import round
+from pprint import pprint
 import plotly.graph_objs as go
 import plotly.io as pio
 
@@ -11,7 +12,7 @@ models = [
     'DecisionTreeClassifier'
 ]
 
-vars = f'allvar'
+vars = f'5var'
 
 fig = go.Figure()
 
@@ -24,7 +25,7 @@ for model in models:
     model_roc_auc = metrics['AUC Score']
 
     trace1 = go.Scatter(x=fpr, y=tpr,
-                        name=f'{model} AUC: {round(model_roc_auc)}',
+                        name=f'{model} - AUC: {round(model_roc_auc,3)}',
                         line=dict(width=2))
 
     fig.add_trace(trace1)
