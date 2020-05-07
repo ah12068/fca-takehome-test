@@ -5,11 +5,11 @@ FCA take home assessment
 
 ### Create your data folders
 
-Place raw data `loans_raw.csv` in `data/raw`
+Place raw data `loans_raw.csv` in `data/raw` \n
 
-Place a copy of the raw data called `loans_int.csv` in `data/interim`
+Place a copy of the raw data called `loans_int.csv` in `data/interim` \n
 
-Place external data in `data/external` see `references/external_data_sources.txt` to download data and rename to `district_mapper.csv`
+Place external data in `data/external` see `references/external_data_sources.txt` to download data and rename to `district_mapper.csv` \n
 
 ### Install packages:
 From root directory
