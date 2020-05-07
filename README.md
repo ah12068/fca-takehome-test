@@ -3,6 +3,10 @@ fca_test
 
 FCA take home assessment
 
+### Install packages:
+From root directory
+`pip install -r requirements.txt`
+
 ### To execute documentation:
 From root directory
 `mkdocs serve`
